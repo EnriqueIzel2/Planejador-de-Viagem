@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.izel.planejadordeviagem.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_distanceInputFragment2"
+            app:destination="@id/distanceInputFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/distanceInputFragment2"
+        android:name="com.izel.planejadordeviagem.DistanceInputFragment"
+        android:label="fragment_distance_input"
+        tools:layout="@layout/fragment_distance_input" >
+        <action
+            android:id="@+id/action_distanceInputFragment2_to_fuelConsumptionInputFragment"
+            app:destination="@id/fuelConsumptionInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fuelConsumptionInputFragment"
+        android:name="com.izel.planejadordeviagem.FuelConsumptionInputFragment"
+        android:label="fragment_fuel_consumption_input"
+        tools:layout="@layout/fragment_fuel_consumption_input" >
+        <action
+            android:id="@+id/action_fuelConsumptionInputFragment_to_fuelPriceInputFragment"
+            app:destination="@id/fuelPriceInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fuelPriceInputFragment"
+        android:name="com.izel.planejadordeviagem.FuelPriceInputFragment"
+        android:label="fragment_fuel_price_input"
+        tools:layout="@layout/fragment_fuel_price_input" >
+        <action
+            android:id="@+id/action_fuelPriceInputFragment_to_tripCostResultFragment"
+            app:destination="@id/tripCostResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripCostResultFragment"
+        android:name="com.izel.planejadordeviagem.TripCostResultFragment"
+        android:label="fragment_trip_cost_result"
+        tools:layout="@layout/fragment_trip_cost_result" />
+</navigation>
