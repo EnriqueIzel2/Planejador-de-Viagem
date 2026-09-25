@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.startButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_distanceInputFragment2)
+            findNavController().navigate(R.id.action_homeFragment_to_distanceInputFragment)
         }
     }
 
