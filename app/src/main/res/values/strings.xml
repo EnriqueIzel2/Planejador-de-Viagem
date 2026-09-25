@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">Planejador de Viagem</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="trip_cost_cta_message">Calcule o custo estimado de sua próxima viagem!</string>
     <string name="action_start">Começar</string>
+    <string name="distance_input_instruction">Insira a distância a ser percorrida em KM</string>
+    <string name="distance_input_hint">Distância (KM)</string>
+    <string name="action_next_screen">Próximo</string>
+    <string name="fuel_consumption_input_instruction">Insira o consumo médio do veículo em km/L</string>
+    <string name="fuel_consumption_input_hint">Consumo (km/L)</string>
+    <string name="action_previous_screen">Voltar</string>
+    <string name="fuel_price_input_instruction">Insira o preço médio do combustível</string>
+    <string name="fuel_price_input_hint">Preço (R$)</string>
+    <string name="action_finish">Finalizar</string>
+    <string name="trip_cost_result_header">Este é o custo estimado da sua viagem</string>
+    <string name="new_trip_button">Planejar Outra Viagem</string>
 </resources>
