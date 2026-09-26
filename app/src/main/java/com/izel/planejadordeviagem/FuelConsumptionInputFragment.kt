@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.izel.planejadordeviagem.databinding.FragmentFuelConsumptionInputBinding
 
 class FuelConsumptionInputFragment : Fragment() {
     private var _binding: FragmentFuelConsumptionInputBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: TripCalculatorViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,13 +31,16 @@ class FuelConsumptionInputFragment : Fragment() {
             }
 
             nextScreenButton.setOnClickListener {
+                val fuelConsumption = fuelConsumptionInput.text.toString().toIntOrNull() ?: 0
+                viewModel.setFuelConsumptionValue(fuelConsumption)
+
                 findNavController().navigate(R.id.action_fuelConsumptionInputFragment_to_fuelPriceInputFragment)
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }
