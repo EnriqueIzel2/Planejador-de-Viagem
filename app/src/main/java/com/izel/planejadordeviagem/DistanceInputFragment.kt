@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.izel.planejadordeviagem.databinding.FragmentDistanceInputBinding
 
 class DistanceInputFragment : Fragment() {
     private var _binding: FragmentDistanceInputBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: TripCalculatorViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,13 +25,18 @@ class DistanceInputFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.nextScreenButton.setOnClickListener {
-            findNavController().navigate(R.id.action_distanceInputFragment_to_fuelConsumptionInputFragment)
+        with(binding) {
+            nextScreenButton.setOnClickListener {
+                val distance = distanceInput.text.toString().toIntOrNull() ?: 0
+                viewModel.setDistanceValue(distance)
+
+                findNavController().navigate(R.id.action_distanceInputFragment_to_fuelConsumptionInputFragment)
+            }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }
