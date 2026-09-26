@@ -13,4 +13,7 @@
     <string name="action_finish">Finalizar</string>
     <string name="trip_cost_result_header">Este é o custo estimado da sua viagem</string>
     <string name="new_trip_button">Planejar Outra Viagem</string>
+    <string name="consumption_label">Consumo: %i</string>
+    <string name="fuel_price_label">Preço do Combustível: R$ %.2f</string>
+    <string name="total_cost_label">Custo Total Estimado: R$ %.2f</string>
 </resources>
