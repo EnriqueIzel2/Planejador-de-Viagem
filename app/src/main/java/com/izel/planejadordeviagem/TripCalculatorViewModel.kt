@@ -9,7 +9,7 @@ class TripCalculatorViewModel : ViewModel() {
     var fuelConsumption = 0
         private set
 
-    var fuelPrice = 1.2f
+    var fuelPrice = 1.2
         private set
 
     fun setDistanceValue(value: Int) {
@@ -20,17 +20,17 @@ class TripCalculatorViewModel : ViewModel() {
         this.fuelConsumption = value
     }
 
-    fun setFuelPriceValue(value: Float) {
+    fun setFuelPriceValue(value: Double) {
         this.fuelPrice = value
     }
 
-    fun calculateTripCost() : Float {
-        return (distance.toFloat() / fuelConsumption.toFloat()) * fuelPrice
+    fun calculateTripCost() : Double {
+        return (distance.toDouble() / fuelConsumption.toDouble()) * fuelPrice
     }
 
     fun clearData() {
         distance = 0
         fuelConsumption = 0
-        fuelPrice = 0f
+        fuelPrice = 0.0
     }
 }
