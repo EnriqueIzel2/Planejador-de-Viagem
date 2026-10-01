@@ -1,32 +1,38 @@
 package com.izel.planejadordeviagem
 
-import android.text.InputFilter
-import android.text.Spanned
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
-import java.util.regex.Pattern
+import java.text.NumberFormat
+import java.util.Locale
 
-fun EditText.limitDecimalDigits(maxDigitsAfterDecimal: Int = 2) {
-    val filter = object : InputFilter {
-        private val pattern = Pattern.compile(
-            "^[0-9]*[.,]?[0-9]{0,$maxDigitsAfterDecimal}$"
-        )
+fun EditText.addCurrencyMask(locale: Locale = Locale("pt", "BR")) {
+    this.addTextChangedListener(object : TextWatcher {
+        private var isUpdating = false
+        private val formatter = NumberFormat.getCurrencyInstance(locale)
 
-        override fun filter(
-            source: CharSequence?,
-            start: Int,
-            end: Int,
-            dest: Spanned?,
-            dstart: Int,
-            dend: Int
-        ): CharSequence? {
-            val newText = StringBuilder(dest.toString())
-                .replace(dstart, dend, source?.subSequence(start, end).toString())
-                .toString()
+        override fun afterTextChanged(p0: Editable?) {
+            if (isUpdating) return
 
-            val matcher = pattern.matcher(newText)
-            return if (matcher.matches()) null else ""
+            isUpdating = true
+
+            val cleanString = p0.toString().replace("[^0-9]".toRegex(), "")
+
+            val parsed = cleanString.toDoubleOrNull() ?: 0.0
+            val amountInCents = parsed / 100.0
+
+            val formatted = formatter.format(amountInCents)
+
+            this@addCurrencyMask.setText(formatted)
+
+            val safeSelectionIndex = formatted.length.coerceAtMost(this@addCurrencyMask.text.length)
+            this@addCurrencyMask.setSelection(safeSelectionIndex)
+
+            isUpdating = false
         }
-    }
 
-    this.filters = arrayOf(*this.filters, filter)
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+    })
 }
