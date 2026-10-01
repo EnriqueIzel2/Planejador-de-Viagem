@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.izel.planejadordeviagem.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_distanceInputFragment"
             app:destination="@id/distanceInputFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/distanceInputFragment"
         android:name="com.izel.planejadordeviagem.DistanceInputFragment"
         android:label="fragment_distance_input"
-        tools:layout="@layout/fragment_distance_input" >
+        tools:layout="@layout/fragment_distance_input">
         <action
             android:id="@+id/action_distanceInputFragment_to_fuelConsumptionInputFragment"
             app:destination="@id/fuelConsumptionInputFragment" />
@@ -27,7 +27,7 @@
         android:id="@+id/fuelConsumptionInputFragment"
         android:name="com.izel.planejadordeviagem.FuelConsumptionInputFragment"
         android:label="fragment_fuel_consumption_input"
-        tools:layout="@layout/fragment_fuel_consumption_input" >
+        tools:layout="@layout/fragment_fuel_consumption_input">
         <action
             android:id="@+id/action_fuelConsumptionInputFragment_to_fuelPriceInputFragment"
             app:destination="@id/fuelPriceInputFragment" />
@@ -36,7 +36,7 @@
         android:id="@+id/fuelPriceInputFragment"
         android:name="com.izel.planejadordeviagem.FuelPriceInputFragment"
         android:label="fragment_fuel_price_input"
-        tools:layout="@layout/fragment_fuel_price_input" >
+        tools:layout="@layout/fragment_fuel_price_input">
         <action
             android:id="@+id/action_fuelPriceInputFragment_to_tripCostResultFragment"
             app:destination="@id/tripCostResultFragment" />
@@ -45,9 +45,11 @@
         android:id="@+id/tripCostResultFragment"
         android:name="com.izel.planejadordeviagem.TripCostResultFragment"
         android:label="fragment_trip_cost_result"
-        tools:layout="@layout/fragment_trip_cost_result" >
+        tools:layout="@layout/fragment_trip_cost_result">
         <action
             android:id="@+id/action_tripCostResultFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
