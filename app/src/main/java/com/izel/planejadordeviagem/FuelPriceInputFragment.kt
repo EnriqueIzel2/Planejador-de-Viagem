@@ -26,14 +26,15 @@ class FuelPriceInputFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            fuelPriceInput.limitDecimalDigits(2)
+            fuelPriceInput.addCurrencyMask()
 
             previousScreenButton.setOnClickListener {
                 findNavController().popBackStack()
             }
 
             finishButton.setOnClickListener {
-                val fuelPrice = fuelPriceInput.text.toString().toFloatOrNull() ?: 0f
+                val rawText = fuelPriceInput.text.toString().replace("[^0-9]".toRegex(), "")
+                val fuelPrice = (rawText.toDoubleOrNull() ?: 0.0) / 100.0
                 viewModel.setFuelPriceValue(fuelPrice)
 
                 findNavController().navigate(R.id.action_fuelPriceInputFragment_to_tripCostResultFragment)
