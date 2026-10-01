@@ -4,4 +4,15 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Cor de fundo da SplashScreen -->
+        <item name="windowSplashScreenBackground">@color/black</item>
+
+        <!-- Ícone centralizado que será exibido -->
+        <item name="windowSplashScreenAnimatedIcon" >@drawable/splash</item>
+
+        <!-- Tema para qual o Android deve migrar assim que a Splash fechar -->
+        <item name="postSplashScreenTheme">@style/Theme.PlanejadorDeViagem</item>
+    </style>
 </resources>
