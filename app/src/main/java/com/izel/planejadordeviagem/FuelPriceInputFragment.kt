@@ -26,6 +26,8 @@ class FuelPriceInputFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+            fuelPriceInput.limitDecimalDigits(2)
+
             previousScreenButton.setOnClickListener {
                 findNavController().popBackStack()
             }
